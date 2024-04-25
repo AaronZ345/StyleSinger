@@ -20,11 +20,11 @@ We provide an example of how you can generate high-quality samples using AlignST
 ### Pre-trained Models
 You can use the pre-trained models we provide [here](). Details of each folder are as follows:
 
-| Model       | Dataset (16 kHz) | Description                                                              | 
+| Model       |  Description                                                              | 
 |-------------|------------------|--------------------------------------------------------------------------|
-| GenerSpeech | LibriTTS,ESD     | Acousitic model [(config)]() |
-| HIFI-GAN    | LibriTTS,ESD     | Neural Vocoder                                                           |
-| Encoder     | /                | Emotion Encoder                                                   |
+| StyleSinger |  Acousitic model [(config)]() |
+| HIFI-GAN    |  Neural Vocoder                                                           |
+| Encoder     |  Emotion Encoder                                                   |
 
 ### Dependencies
 
