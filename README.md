@@ -55,10 +55,10 @@ Generated wav files are saved in `infer_out` by default.<br>
 
 ### Data Preparation 
 
-1. Prepare your own singing dataset or downlowad [M4Singer](https://github.com/M4Singer/M4Singer) (Note: you have to segment M4Singer and align note pitch for each ph, note duration for each ph, and note types (rest: 1, lyric: 2, slur: 3) for each ph as ep_pitches, ep_notedurs, ep_types)
+1. Prepare your own singing dataset or download [GTSinger](https://github.com/GTSinger/GTSinger) (Note: you have to align note pitch for each ph, note duration for each ph, and note types (rest: 1, lyric: 2, slur: 3) for each ph as ep_pitches, ep_notedurs, ep_types)
 2. Put `metadata.json` (including ph, word, item_name, ph_durs, wav_fn, singer, ep_pitches, ep_notedurs, ep_types for each singing voice), `spker_set.json` (including all singers and their id), and `phone_set.json` (all phonemes of your dictionary) in `data/processed/style`
 3. Set `processed_data_dir`, `binary_data_dir`,`valid_prefixes`, `test_prefixes` in the [config](./egs/stylesinger.yaml).
-4. Download global emotion encoder to `emotion_encoder_path`. 
+4. Download the global emotion encoder to `emotion_encoder_path`. 
 5. Preprocess Dataset 
 
 ```bash
