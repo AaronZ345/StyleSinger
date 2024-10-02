@@ -11,7 +11,7 @@ We provide our implementation and pre-trained models in this repository.
 Visit our [demo page](https://stylesinger.github.io/) for audio samples.
 
 ### Pre-trained Models
-You can use the pre-trained models we provide [here](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing). Details of each folder are as follows:
+You can use the pre-trained models we provide [here](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing).**Notably，this checkpoint only support Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
 
 | Model       |  Description                                                              | 
 |-------------|--------------------------------------------------------------------------|
@@ -35,11 +35,11 @@ conda activate stylesinger
 By default, this implementation uses as many GPUs in parallel as returned by `torch.cuda.device_count()`. 
 You can specify which GPUs to use by setting the `CUDA_DEVICES_AVAILABLE` environment variable before running the training module.
 
-## Inference towards style transfer of custom timbre and style
+## Inference towards style transfer of custom timbre and style for Chinese singing voices
 
 Here we provide a speech synthesis pipeline using StyleSinger. 
 
-1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger` （**Notably，this checkpoint only support Chinese! You should train your own model based on GTSinger for multilingual style transfer!)**
+1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger` 
 2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`
 3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`
 4. Prepare **dataset**: Download and put statistical files at `data/binary/test_set`
@@ -51,12 +51,12 @@ CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesing
 
 Generated wav files are saved in `infer_out` by default.<br>
 
-# Train your own model
+# Train your own model based on GTSinger for multilingual style transfer
 
 ### Data Preparation 
 
-1. Prepare your own singing dataset or download [GTSinger](https://github.com/GTSinger/GTSinger) (Note: you have to align note pitch for each ph, note duration for each ph, and note types (rest: 1, lyric: 2, slur: 3) for each ph as ep_pitches, ep_notedurs, ep_types)
-2. Put `metadata.json` (including ph, word, item_name, ph_durs, wav_fn, singer, ep_pitches, ep_notedurs, ep_types for each singing voice), `spker_set.json` (including all singers and their id), and `phone_set.json` (all phonemes of your dictionary) in `data/processed/style`
+1. Prepare your own singing dataset or download [GTSinger](https://github.com/GTSinger/GTSinger) (Note: we provide `metadata.json` and `phone_set.json` in GTSinger)
+2. Put `metadata.json` (including ph, word, item_name, ph_durs, wav_fn, singer, ep_pitches, ep_notedurs, ep_types for each singing voice) and `phone_set.json` (all phonemes of your dictionary) in `data/processed/style`
 3. Set `processed_data_dir`, `binary_data_dir`,`valid_prefixes`, `test_prefixes` in the [config](./egs/stylesinger.yaml).
 4. Download the global emotion encoder to `emotion_encoder_path`. 
 5. Preprocess Dataset 
