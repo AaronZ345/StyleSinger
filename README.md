@@ -16,7 +16,7 @@ Visit our [demo page](https://stylesinger.github.io/) for audio samples.
 - 2024.05: We released the code of StyleSinger!
 - 2023.12: StyleSinger is accepted by AAAI 2024!
 
-## Quick Started
+## Quick Start
 We provide an example of how you can generate high-fidelity samples using StyleSinger.
 
 To try on your own dataset or GTSinger, simply clone this repo in your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
