@@ -39,7 +39,7 @@ You can specify which GPUs to use by setting the `CUDA_DEVICES_AVAILABLE` enviro
 
 Here we provide a speech synthesis pipeline using StyleSinger. 
 
-1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger`
+1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger` （**Notably，this checkpoint only support Chinese! You should train your own model based on GTSinger for multilingual style transfer!)**
 2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`
 3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`
 4. Prepare **dataset**: Download and put statistical files at `data/binary/test_set`
