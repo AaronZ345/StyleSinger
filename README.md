@@ -80,7 +80,7 @@ CUDA_VISIBLE_DEVICES=$GPU python tasks/run.py --config egs/stylesinger.yaml  --e
 
 ### Quick Inference
 
-We provide a mini-set of test samples to demonstrate StyleSinger in [here](https://drive.google.com/drive/folders/1O4pn7UeLzLGjL89nHd7F-rSQybhUCzrA?usp=sharing). Specifically, we provide samples of statistical files which is for faster IO. Please download the statistical files at `data/binary/style/`, while the WAV files are for listening.
+We provide a mini-set of Chinese test samples to demonstrate StyleSinger in [here](https://drive.google.com/drive/folders/1O4pn7UeLzLGjL89nHd7F-rSQybhUCzrA?usp=sharing). Specifically, we provide samples of statistical files which is for faster IO. Please download the statistical files at `data/binary/style/`, while the WAV files are for listening.
 
 Run
 ```bash
