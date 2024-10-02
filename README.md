@@ -16,10 +16,6 @@ Visit our [demo page](https://stylesinger.github.io/) for audio samples.
 - 2024.05: We released the code of StyleSinger!
 - 2023.12: StyleSinger is accepted by AAAI 2024!
 
-## Key Features
-- **Enhanced model generalization** to out-of-distribution (OOD) style reference.
-- **Multi-level Style Transfer** for expressive singing voice synthesis.
-
 ## Quick Started
 We provide an example of how you can generate high-fidelity samples using StyleSinger.
 
