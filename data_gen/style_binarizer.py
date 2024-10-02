@@ -288,9 +288,9 @@ class SingingBinarizer(BaseBinarizer):
         self.word_encoder = None
         EmotionEncoder.load_model(hparams['emotion_encoder_path'])
         os.makedirs(hparams['binary_data_dir'], exist_ok=True)
-        # for fn in ['phone_set.json', 'spker_set.json']:
-        #     remove_file(f"{hparams['binary_data_dir']}/{fn}")
-        #     copy_file(f"{hparams['processed_data_dir']}/{fn}", f"{hparams['binary_data_dir']}/{fn}")
+        for fn in ['phone_set.json']:
+            remove_file(f"{hparams['binary_data_dir']}/{fn}")
+            copy_file(f"{hparams['processed_data_dir']}/{fn}", f"{hparams['binary_data_dir']}/{fn}")
         self.process_data('valid')
         self.process_data('test')
         self.process_data('train')
