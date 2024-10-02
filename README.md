@@ -5,10 +5,25 @@
 PyTorch Implementation of [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.php/AAAI/article/view/29932/31629): Style Transfer for Out-of-Domain Singing Voice Synthesis.
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2312.10741)
+[![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social)](https://github.com/AaronZ345/StyleSinger)
 
 We provide our implementation and pre-trained models in this repository.
 
 Visit our [demo page](https://stylesinger.github.io/) for audio samples.
+
+## News
+- 2024.09: We released the full dataset of [GTSinger](https://github.com/GTSinger/GTSinger)!
+- 2024.05: We released the code of StyleSinger!
+- 2023.12: StyleSinger is accepted by AAAI 2024!
+
+## Key Features
+- **Multi-level Style Transfer** for expressive singing voice synthesis.
+- **Enhanced model generalization** to out-of-distribution (OOD) style reference.
+
+## Quick Started
+We provide an example of how you can generate high-fidelity samples using StyleSinger.
+
+To try on your own dataset or GTSinger, simply clone this repo in your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
 
 ### Pre-trained Models
 You can use the pre-trained models we provide [here](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing).**Notably，this checkpoint only support Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
@@ -58,7 +73,7 @@ Generated wav files are saved in `infer_out` by default.<br>
 1. Prepare your own singing dataset or download [GTSinger](https://github.com/GTSinger/GTSinger) (Note: we provide `metadata.json` and `phone_set.json` in GTSinger)
 2. Put `metadata.json` (including ph, word, item_name, ph_durs, wav_fn, singer, ep_pitches, ep_notedurs, ep_types for each singing voice) and `phone_set.json` (all phonemes of your dictionary) in `data/processed/style`
 3. Set `processed_data_dir`, `binary_data_dir`,`valid_prefixes`, `test_prefixes` in the [config](./egs/stylesinger.yaml).
-4. Download the global emotion encoder to `emotion_encoder_path` (for Chiense only) or train your own global emotion encoder refers to [Emotion Encoder](https://github.com/Rongjiehuang/GenerSpeech/tree/encoder) based on emotion annotations in GTSinger. 
+4. Download the global emotion encoder to `emotion_encoder_path` (training on Chinese only) or train your own global emotion encoder refers to [Emotion Encoder](https://github.com/Rongjiehuang/GenerSpeech/tree/encoder) based on emotion annotations in GTSinger. 
 5. Preprocess Dataset 
 
 ```bash
