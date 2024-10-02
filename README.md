@@ -51,7 +51,7 @@ CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesing
 
 Generated wav files are saved in `infer_out` by default.<br>
 
-# Train your own model based on GTSinger for multilingual style transfer
+## Train your own model based on GTSinger for multilingual style transfer
 
 ### Data Preparation 
 
