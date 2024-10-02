@@ -78,17 +78,6 @@ CUDA_VISIBLE_DEVICES=$GPU python tasks/run.py --config egs/stylesinger.yaml  --e
 CUDA_VISIBLE_DEVICES=$GPU python tasks/run.py --config egs/stylesinger.yaml  --exp_name StyleSinger --infer
 ```
 
-### Quick Inference
-
-We provide a mini-set of Chinese test samples to demonstrate StyleSinger in [here](https://drive.google.com/drive/folders/1O4pn7UeLzLGjL89nHd7F-rSQybhUCzrA?usp=sharing). Specifically, we provide samples of statistical files which is for faster IO. Please download the statistical files at `data/binary/style/`, while the WAV files are for listening.
-
-Run
-```bash
-CUDA_VISIBLE_DEVICES=$GPU python tasks/run.py --config egs/stylesinger.yaml  --exp_name StyleSinger --infer
-```
-
-You will find outputs in `checkpoints/StyleSinger/generated_320000_/wavs`, where [Ref] indicates ground truth mel results and [SVS] indicates predicted results.
-
 ## Acknowledgements
 
 This implementation uses parts of the code from the following Github repos:
