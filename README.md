@@ -54,7 +54,7 @@ Here we provide a speech synthesis pipeline using StyleSinger.
 2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`
 3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`
 4. Prepare **dataset**: Download and put statistical files at `data/binary/test_set`
-5. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`.
+5. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`. **Notably, if you want to use Chinese data in GTSinger to infer, you have to delete _zh in each ph of GTSinger!**
 
 ```bash
 CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesinger.yaml  --exp_name checkpoints/StyleSinger
