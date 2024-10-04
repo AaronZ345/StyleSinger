@@ -130,6 +130,7 @@ f0_infer_with_ref: false
 save_gt: true
 
 # diffsinger
+diff_start: 100000
 schedule_type: 'linear'
 decay_steps: 50000
 dilation_cycle_length: 4  # *
