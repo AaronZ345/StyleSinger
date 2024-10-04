@@ -180,7 +180,8 @@ class StyleSinger(FastSpeech2):
             ret['mel_out'] = self.run_decoder(decoder_inp, tgt_nonpadding, ret, infer=infer, **kwargs)
             is_training = self.training
             ret['x_mask'] = tgt_nonpadding
-            self.run_diffsinger(ref_mels, infer, is_training, ret)
+            if global_steps > hparams['diff_start']:
+                self.run_diffsinger(ref_mels, infer, is_training, ret)
         elif hparams['decoder']=='fft':
             ret['mel_out'] = self.run_decoder(decoder_inp, tgt_nonpadding, ret, infer=infer, **kwargs)
         return ret
