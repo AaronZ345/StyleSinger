@@ -57,7 +57,7 @@ class StyleSingerTask(FastSpeech2Task):
         output = model(txt_tokens, mel2ph=mel2ph, spk_embed=spk_embed, emo_embed=emo_embed,
                         ref_mels=target, ref_f0=f0, f0=f0, uv=uv, tgt_mels=target, global_steps=self.global_step, infer=False, note=notes, note_dur=note_durs, note_type=note_types)
         losses = {}
-        if hparams['decoder']=='diffsinger':
+        if hparams['decoder']=='diffsinger' and self.global_step > hparams['diff_start']:
             losses['diff'] = output['diff']
         if hparams['style']:
             if self.global_step > hparams['forcing']:
