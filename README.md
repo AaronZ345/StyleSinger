@@ -46,7 +46,7 @@ conda activate stylesinger
 By default, this implementation uses as many GPUs in parallel as returned by `torch.cuda.device_count()`. 
 You can specify which GPUs to use by setting the `CUDA_DEVICES_AVAILABLE` environment variable before running the training module.
 
-## Inference towards style transfer for Chinese singing voices
+## Inference for Chinese singing voices
 
 Here we provide a speech synthesis pipeline using StyleSinger. 
 
@@ -61,7 +61,7 @@ CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesing
 
 Generated wav files are saved in `infer_out` by default.<br>
 
-## Train your own model based on GTSinger for multilingual style transfer
+## Train your own model based on GTSinger
 
 ### Data Preparation 
 
