@@ -46,15 +46,14 @@ conda activate stylesinger
 By default, this implementation uses as many GPUs in parallel as returned by `torch.cuda.device_count()`. 
 You can specify which GPUs to use by setting the `CUDA_DEVICES_AVAILABLE` environment variable before running the training module.
 
-## Inference towards style transfer of custom timbre and style for Chinese singing voices
+## Inference towards style transfer for Chinese singing voices
 
 Here we provide a speech synthesis pipeline using StyleSinger. 
 
-1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger` 
-2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`
-3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`
-4. Prepare **dataset**: Download and put statistical files at `data/binary/test_set`
-5. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`. **Notably, if you want to use Chinese data in GTSinger to infer this Chinese checkpoint, you have to delete _zh in each ph of GTSinger, and change \<AP\> to breathe, \<SP\> to _NONE!**
+1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger`.
+2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`.
+3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`.
+4. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`. **Notably, if you want to use Chinese data in GTSinger to infer this Chinese checkpoint, you have to delete _zh in each ph of GTSinger, and change \<AP\> to breathe, \<SP\> to _NONE!**
 
 ```bash
 CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesinger.yaml  --exp_name checkpoints/StyleSinger
