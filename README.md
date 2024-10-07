@@ -68,7 +68,7 @@ Generated wav files are saved in `infer_out` by default.<br>
 
 1. Prepare your own singing dataset or download [GTSinger](https://github.com/GTSinger/GTSinger).
 2. Put `metadata.json` (including ph, word, item_name, ph_durs, wav_fn, singer, ep_pitches, ep_notedurs, ep_types for each singing voice) and `phone_set.json` (all phonemes of your dictionary) in `data/processed/style` **(Note: we provide `metadata.json` and `phone_set.json` in GTSinger, but you need to change the wav_fn of each wav in `metadata.json` to your own absolute path)**.
-3. Set `processed_data_dir` (`data/processed/style`), `binary_data_dir`,`valid_prefixes` (part of item_name, like `Chinese#ZH-Alto-1#Mixed_Voice_and_Falsetto#一次就好`), `test_prefixes` in the [config](./egs/stylesinger.yaml).
+3. Set `processed_data_dir` (`data/processed/style`), `binary_data_dir`,`valid_prefixes` (list of parts of item names, like `["Chinese#ZH-Alto-1#Mixed_Voice_and_Falsetto#一次就好"]`), `test_prefixes` in the [config](./egs/stylesinger.yaml).
 4. Download the global emotion encoder to `emotion_encoder_path` (training on Chinese only) or train your own global emotion encoder referring to [Emotion Encoder](https://github.com/Rongjiehuang/GenerSpeech/tree/encoder) based on emotion annotations in GTSinger. 
 5. Preprocess Dataset: 
 
