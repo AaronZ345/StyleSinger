@@ -53,7 +53,7 @@ Here we provide a speech synthesis pipeline using StyleSinger.
 1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger`.
 2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`.
 3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`.
-4. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`. **Notably, if you want to use Chinese data in GTSinger to infer this Chinese checkpoint, you have to delete _zh in each ph of GTSinger, and change \<AP\> to breathe, \<SP\> to _NONE!**
+4. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`. **Notably, if you want to use Chinese data in GTSinger to infer this Chinese checkpoint, refer to [phone_set](./ZH_checkpoint_phone_set.json), you have to delete _zh in each ph of GTSinger, and change \<AP\> to breathe, \<SP\> to _NONE!**
 5. Infer for style transfer:
 
 ```bash
