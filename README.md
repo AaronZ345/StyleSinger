@@ -6,6 +6,7 @@ PyTorch Implementation of [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.p
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2312.10741)
 [![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social)](https://github.com/AaronZ345/StyleSinger)
+[![zhihu](https://img.shields.io/badge/-知乎-000000?logo=zhihu&logoColor=0084FF)](https://zhuanlan.zhihu.com/p/775792127)
 
 We provide our implementation and pre-trained models in this repository.
 
