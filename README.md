@@ -19,10 +19,10 @@ Visit our [demo page](https://stylesinger.github.io/) for audio samples.
 
 ## Key Features
 
-- We present StyleSinger, the first singing voice synthesis model for zero-shot style transfer of out-of-domain reference samples. StyleSinger excels in generating exceptional singing voices with unseen styles derived from reference singing voice samples.
-- We propose the Residual Style Adaptor (RSA), which uses a residual quantization model to meticulously capture diverse style characteristics in reference samples.
-- We introduce the Uncertainty Modeling Layer Normalization (UMLN) to perturb the style information in the content representation during the training phase, and thus enhance the model generalization of StyleSinger.
-- Extensive experiments in zero-shot style transfer show that StyleSinger exhibits superior audio quality and similarity compared with baseline models.
+- We present **StyleSinger**, the first singing voice synthesis model for zero-shot style transfer of out-of-domain reference samples. StyleSinger excels in generating exceptional singing voices with unseen styles derived from reference singing voice samples.
+- We propose the **Residual Style Adaptor (RSA)**, which uses a residual quantization model to meticulously capture diverse style characteristics in reference samples.
+- We introduce the **Uncertainty Modeling Layer Normalization (UMLN)** to perturb the style information in the content representation during the training phase, and thus enhance the model generalization of StyleSinger.
+- Extensive experiments in **zero-shot style transfer** show that StyleSinger exhibits superior audio quality and similarity compared with baseline models.
 
 ## Quick Start
 We provide an example of how you can generate high-fidelity samples using StyleSinger.
