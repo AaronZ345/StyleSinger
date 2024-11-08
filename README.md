@@ -30,7 +30,7 @@ We provide an example of how you can generate high-fidelity samples using StyleS
 To try on your own dataset or GTSinger, simply clone this repo in your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
 
 ### Pre-trained Models
-You can use all pre-trained models we provide [here](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing). **Notably, this StyleSinge checkpoint only supports Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
+You can use all pre-trained models we provide [here](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing). **Notably, this StyleSinger checkpoint only supports Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
 
 | Model       |  Description                                                              | 
 |-------------|--------------------------------------------------------------------------|
