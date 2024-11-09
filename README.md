@@ -65,6 +65,7 @@ Here we provide a speech synthesis pipeline using StyleSinger.
 5. Infer for style transfer:
 
 ```bash
+rm -rf ./checkpoints/checkpoints
 CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesinger.yaml  --exp_name checkpoints/StyleSinger
 ```
 
