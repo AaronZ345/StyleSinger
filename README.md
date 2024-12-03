@@ -14,7 +14,7 @@ Visit our [demo page](https://stylesinger.github.io/) for audio samples.
 
 ## News
 - 2024.09: We released the full dataset of [GTSinger](https://github.com/GTSinger/GTSinger)!
-- 2024.05: We released the code of StyleSinger!
+- 2024.05: We released the code and checkpoints of StyleSinger!
 - 2023.12: StyleSinger is accepted by AAAI 2024!
 
 ## Key Features
