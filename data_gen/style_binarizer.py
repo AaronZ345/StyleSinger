@@ -324,8 +324,9 @@ class SingingBinarizer(BaseBinarizer):
                 del item['wav']
             item['spk_embed'] = voice_encoder.embed_utterance(item['wav']) \
                 if self.binarization_args['with_spk_embed'] else None
-            processed_wav = preprocess_wav(item['wav_fn'])
-            item['emo_embed'] = Embed_utterance(processed_wav, using_partials=True)
+            if self.binarization_args['with_emotion']:
+                processed_wav = preprocess_wav(item['wav_fn'])
+                item['emo_embed'] = Embed_utterance(processed_wav, using_partials=True)
             builder.add_item(item)
             lengths.append(item['len'])
             total_sec += item['sec']
