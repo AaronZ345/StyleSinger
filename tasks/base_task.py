@@ -1,7 +1,8 @@
 from itertools import chain
 
 from torch.utils.data import ConcatDataset
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
+from tensorboardX import SummaryWriter
 import subprocess
 import traceback
 from datetime import datetime
