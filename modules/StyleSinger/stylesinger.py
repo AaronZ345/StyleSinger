@@ -41,7 +41,7 @@ DIFF_DECODERS = {
 
 class StyleSinger(FastSpeech2):
     '''
-    [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.php/AAAI/article/view/29932/31629): Style Transfer for Out-of-Domain Singing Voice Synthesis.
+    [StyleSinger (AAAI 2024)](https://arxiv.org/abs/2312.10741): Style Transfer for Out-of-Domain Singing Voice Synthesis.
     '''
     def __init__(self, dictionary, out_dims=None):
         super().__init__(dictionary, out_dims)
