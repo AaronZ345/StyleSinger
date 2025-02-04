@@ -10,7 +10,7 @@ PyTorch Implementation of [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.p
 
 We provide our implementation and pre-trained models in this repository.
 
-Visit our [demo page](https://stylesinger.github.io/) for audio samples.
+Visit our [demo page](https://aaronz345.github.io/StyleSingerDemo/) for audio samples.
 
 ## News
 - 2024.09: We released the full dataset of [GTSinger](https://github.com/GTSinger/GTSinger)!
