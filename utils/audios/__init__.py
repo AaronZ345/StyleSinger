@@ -68,7 +68,9 @@ def librosa_wav2spec(wav_path,
     # get mel basis
     fmin = 0 if fmin == -1 else fmin
     fmax = sample_rate / 2 if fmax == -1 else fmax
-    mel_basis = librosa.filters.mel(sample_rate, fft_size, num_mels, fmin, fmax)
+
+    # 生成 Mel 滤波器
+    mel_basis = librosa.filters.mel(sr=sample_rate, n_fft=fft_size, n_mels=num_mels, fmin=fmin, fmax=fmax)
 
     # calculate mel spec
     mel = mel_basis @ linear_spc
