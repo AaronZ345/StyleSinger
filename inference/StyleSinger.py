@@ -49,10 +49,10 @@ class StyleSingerInfer:
         ref_f0=sample['f0']
         notes, note_durs, note_types = sample["notes"], sample["note_durs"], sample["note_types"]
         model_out = self.model(sample['txt_tokens'], spk_embed=spk_embed, emo_embed=emo_embed, ref_mels=ref_mels, ref_f0=ref_f0,
-                                global_steps=20000, infer=True, note=notes, note_dur=note_durs, note_type=note_types)
+                                global_steps=320000, infer=True, note=notes, note_dur=note_durs, note_type=note_types)
     
         f0_pred=model_out['f0_denorm'].cpu().numpy()
-        mel_pred = model_out["mel_out"].cpu()
+        mel_pred = model_out["mel_out"].cpu().detach().numpy()
         mel_pred_mask = np.abs(mel_pred).sum(-1) > 0
         mel_pred = mel_pred[mel_pred_mask]
         mel_pred = np.clip(mel_pred, hparams['mel_vmin'], hparams['mel_vmax'])
