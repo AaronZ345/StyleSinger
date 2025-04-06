@@ -118,7 +118,7 @@ class StyleSinger(FastSpeech2):
 
     def forward(self, txt_tokens, mel2ph=None, spk_embed=None, emo_embed=None, ref_mels=None, ref_f0=None,
                 f0=None, uv=None, skip_decoder=False, global_steps=0, infer=False, note=None, note_dur=None, note_type=None,
-                mix=None,falsetto=None,breathy=None,pharyngeal=None,glissando=None,vibrato=None,**kwargs):
+                **kwargs):
         ret = {}
         # print(txt_tokens.size(),spk_embed.size(),emo_embed.size())
         encoder_out = self.encoder(txt_tokens)  # [B, T, C]
