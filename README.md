@@ -6,6 +6,7 @@ PyTorch Implementation of [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.p
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2312.10741)
 [![zhihu](https://img.shields.io/badge/-知乎-000000?logo=zhihu&logoColor=0084FF)](https://zhuanlan.zhihu.com/p/775792127)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?label=Model)](https://huggingface.co/AaronZ345/StyleSinger)
 [![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social)](https://github.com/AaronZ345/StyleSinger)
 
 We provide our implementation and pre-trained models in this repository.
@@ -30,7 +31,7 @@ We provide an example of how you can generate high-fidelity samples using StyleS
 To try on your own dataset or GTSinger, simply clone this repo in your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
 
 ### Pre-trained Models
-You can use all pre-trained models we provide [here](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing). **Notably, this StyleSinger checkpoint only supports Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
+You can use all pre-trained models we provide in [HuggingFace](https://huggingface.co/AaronZ345/StyleSinger) or [Google Drive](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing). **Notably, this StyleSinger checkpoint only supports Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
 
 | Model       |  Description                                                              | 
 |-------------|--------------------------------------------------------------------------|
