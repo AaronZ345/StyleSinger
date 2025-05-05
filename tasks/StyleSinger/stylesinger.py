@@ -86,6 +86,9 @@ class StyleSingerTask(FastSpeech2Task):
         elif hparams["f0_gen"] == "conv":
             self.add_f0_loss(output['pitch_pred'], f0, uv, losses, nonpadding=nonpadding) # output['pitch_pred']: [B, T, 2], f0: [B, T], uv: [B, T]
 
+    def validation_start(self):
+        self.vocoder: BaseVocoder = get_vocoder_cls(hparams)()
+
     def validation_step(self, sample, batch_idx):
         outputs = {}
         outputs['losses'] = {}
