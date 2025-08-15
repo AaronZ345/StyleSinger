@@ -8,7 +8,7 @@ PyTorch Implementation of [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.p
 [![Demo](https://img.shields.io/badge/🚀%20Demo%20Page-blue)](https://aaronz345.github.io/StyleSingerDemo/)
 [![zhihu](https://img.shields.io/badge/-知乎-000000?logo=zhihu&logoColor=0084FF)](https://zhuanlan.zhihu.com/p/775792127)
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?label=Model)](https://huggingface.co/AaronZ345/StyleSinger)
-[![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social)](https://github.com/AaronZ345/StyleSinger)
+[![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social&label=GitHub+Stars)](https://github.com/AaronZ345/StyleSinger)
 
 We provide our implementation and pre-trained models in this repository.
 
