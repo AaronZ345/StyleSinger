@@ -1,16 +1,19 @@
-<div align="center">
+# StyleSinger: Style Transfer for Out-of-Domain Singing Voice Synthesis
 
-# StyleSinger
+Yu Zhang, Rongjie Huang, Ruiqi Li, JinZheng He, Yan Xia, Feiyang Chen, Xinyu Duan, Baoxing Huai, Zhou Zhao\
+*Zhejiang University, Huawei Cloud*
 
-**Style transfer for out-of-domain singing voice synthesis**
+[AAAI 2024](https://aaai.org/aaai-24-conference/)
 
-[AAAI 2024](https://ojs.aaai.org/index.php/AAAI/article/view/29932)
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-b31b1b.svg)](https://arxiv.org/abs/2312.10741)
+[![Demo](https://img.shields.io/badge/🚀%20Demo%20Page-blue)](https://aaronz345.github.io/StyleSingerDemo/)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?label=Model)](https://huggingface.co/AaronZ345/StyleSinger)
+[![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social&label=GitHub+Stars)](https://github.com/AaronZ345/StyleSinger)
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=flat-square)](https://arxiv.org/abs/2312.10741) [![Models](https://img.shields.io/badge/Models-Hugging%20Face-ffd21e?style=flat-square)](https://huggingface.co/AaronZ345/StyleSinger) [![Demo](https://img.shields.io/badge/Demo-Samples-2563eb?style=flat-square)](https://aaronz345.github.io/StyleSingerDemo/) [![Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=flat-square)](https://github.com/AaronZ345/StyleSinger)
+[![知乎](https://img.shields.io/badge/-知乎-000000?logo=zhihu&logoColor=0084FF)](https://zhuanlan.zhihu.com/p/775792127)
 
-[Quick start](#quick-start) · [Checkpoints](#checkpoints) · [Input format](#input-format) · [Training](docs/training.md) · [Citation](#citations)
-
-</div>
+> **Start here** · [Quick start](#quick-start) · [Checkpoints](#checkpoints)\
+> **Reference** · [Input format](#input-format) · [Training](docs/training.md) · [Citation](#citations)
 
 StyleSinger transfers styles from reference singing to a target phoneme sequence and musical score. This repository includes the implementation and pretrained checkpoints.
 
@@ -22,13 +25,6 @@ StyleSinger transfers styles from reference singing to a target phoneme sequence
 | Runtime | Python 3.8, PyTorch 1.9.0 + CUDA 11.1 |
 
 The released checkpoint supports **Chinese only**. For other languages, train a model using [GTSinger](https://github.com/AaronZ345/GTSinger) or your own dataset and matching phoneme vocabulary.
-
-```mermaid
-flowchart TB
-    score["Target phonemes and score"] --> model["StyleSinger"]
-    reference["Reference singing · 48 kHz"] --> model
-    model --> vocoder["HIFI-GAN"] --> output["Generated singing"]
-```
 
 ## Quick start
 
@@ -87,20 +83,16 @@ Keep the phoneme and score arrays aligned. When using Chinese GTSinger annotatio
 
 ## Method and training
 
-The Residual Style Adaptor (RSA) uses residual quantization to represent reference styles. Uncertainty Modeling Layer Normalization (UMLN) perturbs style information in the content representation during training. See the [paper](https://arxiv.org/abs/2312.10741) for the architecture and zero-shot style-transfer comparisons.
+The Residual Style Adaptor (RSA) uses residual quantization to represent reference styles. Uncertainty Modeling Layer Normalization (UMLN) perturbs style information in the content representation during training. See the [paper](https://ojs.aaai.org/index.php/AAAI/article/view/29932) for the architecture and zero-shot style-transfer comparisons.
 
 The [training guide](docs/training.md) covers GTSinger metadata, train/validation/test splits, emotion-encoder preparation, binarization, training, and inference with your own model.
 
 <details>
-<summary>Release history and authors</summary>
+<summary>Release history</summary>
 
 - September 2024: released the full [GTSinger](https://github.com/AaronZ345/GTSinger) dataset.
 - May 2024: released StyleSinger code and checkpoints.
 - December 2023: accepted to AAAI 2024.
-
-Yu Zhang, Rongjie Huang, Ruiqi Li, JinZheng He, Yan Xia, Feiyang Chen, Xinyu Duan, Baoxing Huai, Zhou Zhao | Zhejiang University, Huawei Cloud
-
-[中文介绍](https://zhuanlan.zhihu.com/p/775792127)
 
 </details>
 
