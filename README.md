@@ -1,9 +1,9 @@
 <h1>StyleSinger: Style Transfer for Out-of-Domain Singing Voice Synthesis<br>
-  <a href="https://aaai.org/aaai-24-conference/"><img src="assets/readme/venue-mark.png" width="26" alt="" /><img src="assets/readme/link-venue.svg" alt="AAAI 2024" /></a>
+  <a href="https://aaai.org/aaai-24-conference/"><img src="assets/readme/link-venue.svg" alt="AAAI 2024" /></a>
 </h1>
 
 <p>
-  <strong><a href="https://aaronz345.github.io/">Yu&nbsp;Zhang</a></strong>, Rongjie&nbsp;Huang, Ruiqi&nbsp;Li, JinZheng&nbsp;He, Yan&nbsp;Xia, Feiyang&nbsp;Chen, Xinyu&nbsp;Duan, Baoxing&nbsp;Huai, Zhou&nbsp;Zhao&nbsp;·&nbsp;<img src="https://www.zju.edu.cn/_upload/article/images/c3/98/1fb1d281492eb477a098ef7a2901/05966b26-ab45-470d-94c1-99b1e02d12f4.png" width="38" alt="" />&nbsp;<em>Zhejiang&nbsp;University, Huawei Cloud</em>
+  <strong><a href="https://aaronz345.github.io/">Yu&nbsp;Zhang</a></strong>, Rongjie&nbsp;Huang, Ruiqi&nbsp;Li, JinZheng&nbsp;He, Yan&nbsp;Xia, Feiyang&nbsp;Chen, Xinyu&nbsp;Duan, Baoxing&nbsp;Huai, Zhou&nbsp;Zhao&ensp;<img src="assets/readme/affiliation-zju.svg" align="absmiddle" alt="Zhejiang University" />
 </p>
 
 <p>
