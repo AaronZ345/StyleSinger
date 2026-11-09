@@ -1,104 +1,108 @@
-# StyleSinger: Style Transfer for Out-of-Domain Singing Voice Synthesis
+<div align="center">
 
-#### Yu Zhang, Rongjie Huang, Ruiqi Li, JinZheng He, Yan Xia, Feiyang Chen, Xinyu Duan, Baoxing Huai, Zhou Zhao | Zhejiang University, Huawei Cloud
+# StyleSinger
 
-PyTorch Implementation of [StyleSinger (AAAI 2024)](https://ojs.aaai.org/index.php/AAAI/article/view/29932): Style Transfer for Out-of-Domain Singing Voice Synthesis.
+**Style transfer for out-of-domain singing voice synthesis**
 
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2312.10741)
-[![Demo](https://img.shields.io/badge/🚀%20Demo%20Page-blue)](https://aaronz345.github.io/StyleSingerDemo/)
-[![zhihu](https://img.shields.io/badge/-知乎-000000?logo=zhihu&logoColor=0084FF)](https://zhuanlan.zhihu.com/p/775792127)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?label=Model)](https://huggingface.co/AaronZ345/StyleSinger)
-[![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social&label=GitHub+Stars)](https://github.com/AaronZ345/StyleSinger)
+[AAAI 2024](https://ojs.aaai.org/index.php/AAAI/article/view/29932)
 
-We provide our implementation and pre-trained models in this repository.
+[![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?style=flat-square)](https://arxiv.org/abs/2312.10741) [![Models](https://img.shields.io/badge/Models-Hugging%20Face-ffd21e?style=flat-square)](https://huggingface.co/AaronZ345/StyleSinger) [![Demo](https://img.shields.io/badge/Demo-Samples-2563eb?style=flat-square)](https://aaronz345.github.io/StyleSingerDemo/) [![Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=flat-square)](https://github.com/AaronZ345/StyleSinger)
 
-Visit our [demo page](https://aaronz345.github.io/StyleSingerDemo/) for audio samples.
+[Quick start](#quick-start) · [Checkpoints](#checkpoints) · [Input format](#input-format) · [Training](docs/training.md) · [Citation](#citations)
 
-## News
-- 2024.09: We released the full dataset of [GTSinger](https://github.com/AaronZ345/GTSinger)!
-- 2024.05: We released the code and checkpoints of StyleSinger!
-- 2023.12: StyleSinger is accepted by AAAI 2024!
+</div>
 
-## Key Features
+StyleSinger transfers styles from reference singing to a target phoneme sequence and musical score. This repository includes the implementation and pretrained checkpoints.
 
-- We present **StyleSinger**, the first singing voice synthesis model for zero-shot style transfer of out-of-domain reference samples. StyleSinger excels in generating exceptional singing voices with unseen styles derived from reference singing voice samples.
-- We propose the **Residual Style Adaptor (RSA)**, which uses a residual quantization model to meticulously capture diverse style characteristics in reference samples.
-- We introduce the **Uncertainty Modeling Layer Normalization (UMLN)** to perturb the style information in the content representation during the training phase, and thus enhance the model generalization of StyleSinger.
-- Extensive experiments in **zero-shot style transfer** show that StyleSinger exhibits superior audio quality and similarity compared with baseline models.
+| Released model | Requirements |
+| --- | --- |
+| Checkpoint language | Chinese |
+| Reference audio | 48 kHz singing |
+| Output | 48 kHz singing waveform |
+| Runtime | Python 3.8, PyTorch 1.9.0 + CUDA 11.1 |
 
-## Quick Start
-We provide an example of how you can generate high-fidelity samples using StyleSinger.
+The released checkpoint supports **Chinese only**. For other languages, train a model using [GTSinger](https://github.com/AaronZ345/GTSinger) or your own dataset and matching phoneme vocabulary.
 
-To try on your own dataset or GTSinger, simply clone this repo on your local machine provided with NVIDIA GPU + CUDA cuDNN and follow the below instructions.
-
-### Pre-trained Models
-You can use all pre-trained models we provide on [HuggingFace](https://huggingface.co/AaronZ345/StyleSinger) or [Google Drive](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing). **Notably, this StyleSinger checkpoint only supports Chinese! You should train your own model based on GTSinger for multilingual style transfer!** Details of each folder are as follows:
-
-| Model       |  Description                                                              | 
-|-------------|--------------------------------------------------------------------------|
-| StyleSinger |  Acousitic model [(config)](./egs/stylesinger.yaml) |
-| HIFI-GAN    |  Neural Vocoder                                                           |
-| Encoder     |  Emotion Encoder                                                   |
-
-### Dependencies
-
-A suitable [conda](https://conda.io/) environment named `stylesinger` can be created
-and activated with:
-
+```mermaid
+flowchart LR
+    score["Target phonemes and score"] --> model["StyleSinger"]
+    reference["Reference singing · 48 kHz"] --> model
+    model --> vocoder["HIFI-GAN"] --> output["Generated singing"]
 ```
-conda create -n stylesinger python=3.8
-conda install --yes --file requirements.txt
+
+## Quick start
+
+The example requires an NVIDIA GPU, the checkpoints below, and a reference recording. Run the commands from the repository root after preparing those files.
+
+### 1. Install the environment
+
+```bash
+git clone https://github.com/AaronZ345/StyleSinger.git
+cd StyleSinger
+conda create -n stylesinger python=3.8 -y
 conda activate stylesinger
+python -m pip install -r requirements.txt \
+  --find-links https://download.pytorch.org/whl/torch_stable.html
 ```
 
-### Multi-GPU
+The requirements preserve the original model environment. The PyTorch wheel index supplies the pinned CUDA build.
 
-By default, this implementation uses as many GPUs in parallel as returned by `torch.cuda.device_count()`. 
-You can specify which GPUs to use by setting the `CUDA_DEVICES_AVAILABLE` environment variable before running the training module.
+### 2. Prepare the checkpoint and input
 
-## Inference for Chinese singing voices
+Download the `checkpoints/` directory from [Hugging Face](https://huggingface.co/AaronZ345/StyleSinger/tree/main/checkpoints) into the repository root. Place a copy of [ZH_checkpoint_phone_set.json](ZH_checkpoint_phone_set.json) at `data/processed/style/phone_set.json` for the released checkpoint.
 
-Here we provide a speech synthesis pipeline using StyleSinger. 
+Edit the `inp` dictionary in [StyleSingerInfer.example_run](inference/StyleSinger.py) with your reference path and target phoneme/score sequence. The included reference path is an example; supply your own audio file. Check the paths in [egs/stylesinger.yaml](egs/stylesinger.yaml).
 
-1. Prepare **StyleSinger** (acoustic model): Download and put checkpoint at `checkpoints/StyleSinger`.
-2. Prepare **HIFI-GAN** (neural vocoder): Download and put checkpoint at `checkpoints/hifigan`.
-3. Prepare **Emotion Encoder**: Download and put checkpoint at `checkpoints/global.pt`.
-4. Prepare **reference information**: Provide a reference_audio (48k) and input target ph, target note for each ph, target note_dur for each ph, target note_type for each ph (rest: 1, lyric: 2, slur: 3), and reference audio path. Input these information in `Inference/StyleSinger.py`. **Notably, if you want to use Chinese data in GTSinger to infer this Chinese checkpoint, refer to [phone_set](./ZH_checkpoint_phone_set.json), you have to delete _zh in each ph of GTSinger, and change \<AP\> to breathe, \<SP\> to _NONE!**
-5. Infer for style transfer:
+### 3. Generate a sample
 
 ```bash
-rm -rf ./checkpoints/checkpoints
-CUDA_VISIBLE_DEVICES=$GPU python inference/StyleSinger.py --config egs/stylesinger.yaml  --exp_name checkpoints/StyleSinger
+PYTHONPATH=. CUDA_VISIBLE_DEVICES=0 python inference/StyleSinger.py \
+  --config egs/stylesinger.yaml --exp_name checkpoints/StyleSinger
 ```
 
-Generated wav files are saved in `infer_out` by default.<br>
+The example writes `infer_out/test.wav`. Set `CUDA_VISIBLE_DEVICES` to the existing GPU you intend to use.
 
-## Train your own model based on GTSinger
+## Checkpoints
 
-### Data Preparation 
+| Component | Local path | Role |
+| --- | --- | --- |
+| StyleSinger | `checkpoints/StyleSinger/` | Acoustic model |
+| HIFI-GAN | `checkpoints/hifigan/` | Vocoder checkpoint and `config.yaml` |
+| Emotion encoder | `checkpoints/global.pt` | Global emotion representation |
 
-1. Prepare your own singing dataset or download [GTSinger](https://github.com/AaronZ345/GTSinger).
-2. Put `metadata.json` (including ph, word, item_name, ph_durs, wav_fn, singer, ep_pitches, ep_notedurs, ep_types for each singing voice) and `phone_set.json` (all phonemes of your dictionary) in `data/processed/style` **(Note: we provide `metadata.json` and `phone_set.json` in GTSinger, but you need to change the wav_fn of each wav in `metadata.json` to your own absolute path)**.
-3. Set `processed_data_dir` (`data/processed/style`), `binary_data_dir`, `valid_prefixes` (list of parts of item names, like `["Chinese#ZH-Alto-1#Mixed_Voice_and_Falsetto#一次就好"]`), `test_prefixes` in the [config](./egs/stylesinger.yaml).
-4. Download the global emotion encoder to `emotion_encoder_path` (training on Chinese only) or train your own global emotion encoder referring to [Emotion Encoder](https://github.com/Rongjiehuang/GenerSpeech/tree/encoder) based on emotion annotations in GTSinger. 
-5. Preprocess Dataset: 
+[Hugging Face](https://huggingface.co/AaronZ345/StyleSinger) · [Google Drive mirror](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing)
 
-```bash
-export PYTHONPATH=.
-CUDA_VISIBLE_DEVICES=$GPU python data_gen/tts/bin/binarize.py --config egs/stylesinger.yaml
-```
+## Input format
 
-### Training StyleSinger
+| Field in `inp` | Meaning |
+| --- | --- |
+| `name` | Sample identifier |
+| `ph` | Target phonemes in the checkpoint vocabulary |
+| `note` | Target note for each phoneme |
+| `note_dur` | Note duration for each phoneme |
+| `note_type` | Rest: 1; lyric: 2; slur: 3 |
+| `ref_audio` | Path to the 48 kHz reference singing recording |
 
-```bash
-CUDA_VISIBLE_DEVICES=$GPU python tasks/run.py --config egs/stylesinger.yaml  --exp_name StyleSinger --reset
-```
+Keep the phoneme and score arrays aligned. When using Chinese GTSinger annotations with this checkpoint, remove `_zh` from phonemes, map `<AP>` to `breathe`, and map `<SP>` to `_NONE`. Use the supplied [checkpoint vocabulary](ZH_checkpoint_phone_set.json), not a different training vocabulary.
 
-### Inference using StyleSinger
+## Method and training
 
-```bash
-CUDA_VISIBLE_DEVICES=$GPU python tasks/run.py --config egs/stylesinger.yaml  --exp_name StyleSinger --infer
-```
+The Residual Style Adaptor (RSA) uses residual quantization to represent reference styles. Uncertainty Modeling Layer Normalization (UMLN) perturbs style information in the content representation during training. See the [paper](https://arxiv.org/abs/2312.10741) for the architecture and zero-shot style-transfer comparisons.
+
+The [training guide](docs/training.md) covers GTSinger metadata, train/validation/test splits, emotion-encoder preparation, binarization, training, and inference with your own model.
+
+<details>
+<summary>Release history and authors</summary>
+
+- September 2024: released the full [GTSinger](https://github.com/AaronZ345/GTSinger) dataset.
+- May 2024: released StyleSinger code and checkpoints.
+- December 2023: accepted to AAAI 2024.
+
+Yu Zhang, Rongjie Huang, Ruiqi Li, JinZheng He, Yan Xia, Feiyang Chen, Xinyu Duan, Baoxing Huai, Zhou Zhao | Zhejiang University, Huawei Cloud
+
+[中文介绍](https://zhuanlan.zhihu.com/p/775792127)
+
+</details>
 
 ## Acknowledgements
 
@@ -127,5 +131,3 @@ If you find this code useful in your research, please cite our work:
 ## Disclaimer ##
 
 Any organization or individual is prohibited from using any technology mentioned in this paper to generate someone's singing without his/her consent, including but not limited to government leaders, political figures, and celebrities. If you do not comply with this item, you could be in violation of copyright laws.
-
- ![visitors](https://visitor-badge.laobi.icu/badge?page_id=AaronZ345/StyleSinger)
