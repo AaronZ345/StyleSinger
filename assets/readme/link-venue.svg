@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="83" height="26" viewBox="0 0 83 26">
+  <title>AAAI 2024</title>
+  <!-- Conference mark source: https://aaai.org/wp-content/uploads/2023/05/AAAI-24_Mark-Inverse-300x277.png -->
+  <style>
+    text { fill: #60427a }
+    @media (prefers-color-scheme: dark) { text { fill: #d9b8f1 } }
+  </style>
+  <text x="4" y="13" dominant-baseline="central" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="15" font-weight="650">AAAI 2024</text>
+</svg>

@@ -1,21 +1,31 @@
-# StyleSinger: Style Transfer for Out-of-Domain Singing Voice Synthesis
+<h1>StyleSinger: Style Transfer for Out-of-Domain Singing Voice Synthesis<br>
+  <a href="https://aaai.org/aaai-24-conference/"><img src="assets/readme/venue-mark.png" width="26" alt="" /><img src="assets/readme/link-venue.svg" alt="AAAI 2024" /></a>
+</h1>
 
-Yu Zhang, Rongjie Huang, Ruiqi Li, JinZheng He, Yan Xia, Feiyang Chen, Xinyu Duan, Baoxing Huai, Zhou Zhao\
-*Zhejiang University, Huawei Cloud*
+<p>
+  <strong><a href="https://aaronz345.github.io/">Yu&nbsp;Zhang</a></strong>, Rongjie&nbsp;Huang, Ruiqi&nbsp;Li, JinZheng&nbsp;He, Yan&nbsp;Xia, Feiyang&nbsp;Chen, Xinyu&nbsp;Duan, Baoxing&nbsp;Huai, Zhou&nbsp;Zhao&nbsp;·&nbsp;<img src="https://www.zju.edu.cn/_upload/article/images/c3/98/1fb1d281492eb477a098ef7a2901/05966b26-ab45-470d-94c1-99b1e02d12f4.png" width="38" alt="" />&nbsp;<em>Zhejiang&nbsp;University, Huawei Cloud</em>
+</p>
 
-[AAAI 2024](https://aaai.org/aaai-24-conference/)
+<p>
+  <a href="https://arxiv.org/abs/2312.10741"><img src="assets/readme/link-paper.svg" alt="Paper" /></a>
+  <a href="https://aaronz345.github.io/StyleSingerDemo/"><img src="assets/readme/link-demo.svg" alt="Demo Page" /></a>
+  <a href="https://huggingface.co/AaronZ345/StyleSinger"><img src="assets/readme/link-models.svg" alt="Models" /></a>
+  <a href="https://zhuanlan.zhihu.com/p/775792127"><img src="assets/readme/press-zhihu.svg" alt="知乎" /></a>
+</p>
 
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-b31b1b.svg)](https://arxiv.org/abs/2312.10741)
-[![Demo](https://img.shields.io/badge/🚀%20Demo%20Page-blue)](https://aaronz345.github.io/StyleSingerDemo/)
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-blue?label=Model)](https://huggingface.co/AaronZ345/StyleSinger)
-[![GitHub Stars](https://img.shields.io/github/stars/AaronZ345/StyleSinger?style=social&label=GitHub+Stars)](https://github.com/AaronZ345/StyleSinger)
-
-[![知乎](https://img.shields.io/badge/-知乎-000000?logo=zhihu&logoColor=0084FF)](https://zhuanlan.zhihu.com/p/775792127)
-
-> **Start here** · [Quick start](#quick-start) · [Checkpoints](#checkpoints)\
-> **Reference** · [Input format](#input-format) · [Training](docs/training.md) · [Citation](#citations)
+## ![](assets/readme/section-overview.svg) Overview
 
 StyleSinger transfers styles from reference singing to a target phoneme sequence and musical score. This repository includes the implementation and pretrained checkpoints.
+
+Use [Quick start](#quick-start) with the released [checkpoints](#checkpoints) and the [input format](#input-format). The [training guide](docs/training.md) covers training on your own data. To cite this work, use the [BibTeX entry](#citations).
+
+## ![](assets/readme/section-history.svg) News
+
+- **2024.09** · Released the full [GTSinger](https://github.com/AaronZ345/GTSinger) dataset.
+- **2024.05** · Released StyleSinger code and checkpoints.
+- **2023.12** · Accepted to AAAI 2024.
+
+## ![](assets/readme/section-quick-start.svg) Quick start
 
 | Released model | Requirements |
 | --- | --- |
@@ -25,8 +35,6 @@ StyleSinger transfers styles from reference singing to a target phoneme sequence
 | Runtime | Python 3.8, PyTorch 1.9.0 + CUDA 11.1 |
 
 The released checkpoint supports **Chinese only**. For other languages, train a model using [GTSinger](https://github.com/AaronZ345/GTSinger) or your own dataset and matching phoneme vocabulary.
-
-## Quick start
 
 The example requires an NVIDIA GPU, the checkpoints below, and a reference recording. Run the commands from the repository root after preparing those files.
 
@@ -58,7 +66,7 @@ PYTHONPATH=. CUDA_VISIBLE_DEVICES=0 python inference/StyleSinger.py \
 
 The example writes `infer_out/test.wav`. Set `CUDA_VISIBLE_DEVICES` to the existing GPU you intend to use.
 
-## Checkpoints
+## ![](assets/readme/section-dataset.svg) Checkpoints
 
 | Component | Local path | Role |
 | --- | --- | --- |
@@ -68,7 +76,7 @@ The example writes `infer_out/test.wav`. Set `CUDA_VISIBLE_DEVICES` to the exist
 
 [Hugging Face](https://huggingface.co/AaronZ345/StyleSinger) · [Google Drive mirror](https://drive.google.com/drive/folders/1C0Lp45EWFgcy7F3kGtU9s1wnyA8Nytbd?usp=sharing)
 
-## Input format
+## ![](assets/readme/section-preprocessing.svg) Input format
 
 | Field in `inp` | Meaning |
 | --- | --- |
@@ -81,22 +89,19 @@ The example writes `infer_out/test.wav`. Set `CUDA_VISIBLE_DEVICES` to the exist
 
 Keep the phoneme and score arrays aligned. When using Chinese GTSinger annotations with this checkpoint, remove `_zh` from phonemes, map `<AP>` to `breathe`, and map `<SP>` to `_NONE`. Use the supplied [checkpoint vocabulary](ZH_checkpoint_phone_set.json), not a different training vocabulary.
 
-## Method and training
+## ![](assets/readme/section-method.svg) Method and training
 
 The Residual Style Adaptor (RSA) uses residual quantization to represent reference styles. Uncertainty Modeling Layer Normalization (UMLN) perturbs style information in the content representation during training. See the [paper](https://ojs.aaai.org/index.php/AAAI/article/view/29932) for the architecture and zero-shot style-transfer comparisons.
 
 The [training guide](docs/training.md) covers GTSinger metadata, train/validation/test splits, emotion-encoder preparation, binarization, training, and inference with your own model.
 
-<details>
-<summary>Release history</summary>
+<p align="center">
+  <img src="assets/readme/figure-2-architecture.png" width="100%" alt="StyleSinger architecture, with its uncertainty modeling layer normalization and residual style adaptor." />
+  <br>
+  <sub><a href="https://arxiv.org/html/2312.10741v5#S2.F2">Figure 2</a>. StyleSinger architecture and its two style modeling components.</sub>
+</p>
 
-- September 2024: released the full [GTSinger](https://github.com/AaronZ345/GTSinger) dataset.
-- May 2024: released StyleSinger code and checkpoints.
-- December 2023: accepted to AAAI 2024.
-
-</details>
-
-## Acknowledgements
+## ![](assets/readme/section-acknowledgements.svg) Acknowledgements
 
 This implementation uses parts of the code from the following Github repos:
 [GenerSpeech](https://github.com/Rongjiehuang/GenerSpeech),
@@ -105,7 +110,7 @@ This implementation uses parts of the code from the following Github repos:
 [DiffSinger](https://github.com/MoonInTheRiver/DiffSinger)
 as described in our code.
 
-## Citations ##
+## ![](assets/readme/section-citations.svg) Citations
 
 If you find this code useful in your research, please cite our work:
 ```bib
@@ -120,6 +125,6 @@ If you find this code useful in your research, please cite our work:
 }
 ```
 
-## Disclaimer ##
+## ![](assets/readme/section-disclaimer.svg) Disclaimer
 
 Any organization or individual is prohibited from using any technology mentioned in this paper to generate someone's singing without his/her consent, including but not limited to government leaders, political figures, and celebrities. If you do not comply with this item, you could be in violation of copyright laws.
