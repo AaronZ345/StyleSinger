@@ -24,7 +24,7 @@ StyleSinger transfers styles from reference singing to a target phoneme sequence
 The released checkpoint supports **Chinese only**. For other languages, train a model using [GTSinger](https://github.com/AaronZ345/GTSinger) or your own dataset and matching phoneme vocabulary.
 
 ```mermaid
-flowchart LR
+flowchart TB
     score["Target phonemes and score"] --> model["StyleSinger"]
     reference["Reference singing · 48 kHz"] --> model
     model --> vocoder["HIFI-GAN"] --> output["Generated singing"]
